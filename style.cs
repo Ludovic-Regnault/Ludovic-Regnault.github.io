@@ -1,0 +1,46 @@
+using System.Net.Mail;
+using System.Reflection;
+using static System.Net.Mime.MediaTypeNames;
+
+* {
+margin: 0;
+padding: 0;
+    box - sizing: border - box;
+}
+
+html, body {
+  height: 100 %;
+scroll - behavior: smooth;
+font - family: "Helvetica Neue", Arial, sans-serif;
+background: black;
+}
+
+.overlay {
+  position: fixed;
+top: 50 %;
+left: 50 %;
+transform: translate(-50 %, -50 %);
+font - size: 3rem;
+letter - spacing: 3px;
+color: white;
+text - transform: uppercase;
+z - index: 10;
+pointer - events: none;
+opacity: 0.8;
+}
+
+.slide {
+  height: 100vh;
+width: 100 %;
+background - size: cover;
+background - position: center;
+background - attachment: fixed;
+}
+
+footer {
+  text-align: center;
+color: white;
+padding: 2em;
+font - size: 0.9rem;
+opacity: 0.6;
+}
