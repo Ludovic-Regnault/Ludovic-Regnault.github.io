@@ -23,7 +23,7 @@ const textBox = document.getElementById('textBox');
 const textBoxContact = document.getElementById('textBoxContact');
 function ResizeSectionA() {
     textBox.style.left = globalPadding + globalPadding + buttonSize + 'px';
-    textBox.style.width = Math.min(850, vw - (3 * globalPadding + buttonSize)) + 'px';
+    textBox.style.width = Math.min(700, vw - (3 * globalPadding + buttonSize)) + 'px';
 
  
     textBoxContact.style.left = globalPadding + globalPadding + buttonSize + 'px';

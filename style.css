@@ -97,6 +97,7 @@ body {
     overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 200;
 }
 
 
@@ -123,6 +124,7 @@ body {
     overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index:200;
 }
 
 
@@ -141,7 +143,7 @@ body {
     justify-content: space-between; /* top and bottom pinned */
     align-items: flex-end;
     height: calc(100vh - var(--globalPadding) - var(--globalPadding)); /* account for top/bottom margin */
-    z-index: 100;
+    z-index: 50;
     box-sizing: border-box;
 }
 
