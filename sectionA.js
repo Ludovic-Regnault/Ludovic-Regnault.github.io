@@ -23,10 +23,11 @@ const textBox = document.getElementById('textBox');
 const textBoxContact = document.getElementById('textBoxContact');
 function ResizeSectionA() {
     textBox.style.left = globalPadding + globalPadding + buttonSize + 'px';
-    textBox.style.width = Math.min(850, vw - 3 * globalPadding + buttonSize) + 'px';
+    textBox.style.width = Math.min(850, vw - (3 * globalPadding + buttonSize)) + 'px';
 
+ 
     textBoxContact.style.left = globalPadding + globalPadding + buttonSize + 'px';
-    textBoxContact.style.width = Math.min(400, vw - 3 * globalPadding + buttonSize) + 'px';
+    textBoxContact.style.width = Math.min(400, vw - (3 * globalPadding + buttonSize)) + 'px';
 
     const signatureWidth = 0.4 * squareSideButtons;
     signature.style.width = signatureWidth + 'px';
