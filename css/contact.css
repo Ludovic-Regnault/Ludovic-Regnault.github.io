@@ -1,0 +1,60 @@
+#credits{
+    position: fixed;
+    bottom: var(--globalPadding);
+    right: var(--globalPadding);
+    font-size: calc(0.22 * var(--imagePadding));
+    z-index: 100;
+    user-select: none;
+    pointer-events: none;
+    color: rgb(36,36,36);
+}
+
+
+
+#contact.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#contact {
+    position: fixed;
+    bottom: 0;
+    left: calc(var(--extra) + var(--globalPadding));
+    height: var(--imagePadding);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* The clickable container */
+#contact a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: var(--globalPadding);
+    padding-bottom: var(--globalPadding);
+}
+
+/* Horizontal spacing between icons */
+#contact a + a {
+    margin-left: var(--globalPadding);
+}
+
+/* The actual icon images */
+#contact img {
+    height: calc(var(--imagePadding) - 2 * var(--globalPadding)); /* exact requirement */
+    width: calc(var(--imagePadding) - 2 * var(--globalPadding));  /* square */
+    display: block;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+}
+
+#contact img:hover {
+    transform: scale(1.1);
+}

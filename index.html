@@ -3,187 +3,160 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ludovic Regnault — full-screen photography of artworks." />
+    <meta name="description" content="Ludovic Regnault — artworks." />
     <title>Ludovic Regnault</title>
-    <link rel="stylesheet" href="style.css" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/spacer.css">
+    <link rel="stylesheet" href="css/scrollbars.css">
+    <link rel="stylesheet" href="css/home_button.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/extra_overlay.css">
+    <link rel="stylesheet" href="css/columns.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+
+<audio id="bg-music" src="FragmentsOfLight.mp3" loop autoplay muted></audio>
+
+<script>
+  // Unmute after the first user interaction
+  document.addEventListener('click', () => {
+    const audio = document.getElementById('bg-music');
+    audio.muted = false;
+    audio.play();
+  }, { once: true });
+</script>
+
 <body>
 
-    <div id="debug"></div>
 
-    <!-- BUTTONS -->
-
-    <img class="side-btn" id="contactIcon" src="icons/round/contact.png" alt="Contact">
-    <img class="side-btn" id="textIcon" src="icons/round/txt.png" alt="Text">
-
-    <div id="right-side-buttons">
-        <img class="side-btn" id="homeIcon" src="icons/round/upup.png" alt="Home">
-        <img><!-- spacer -->
-        <img class="side-btn" id="upIcon" src="icons/round/up.png" alt="Up">
-        <img class="side-btn" id="downIcon" src="icons/round/down.png" alt="Down">
-        <img><!-- spacer -->
-        <img class="side-btn" id="fullscreenIcon" src="icons/round/fs.png" alt="Toggle fullscreen">
-    </div>
-
-
-
-
-
-
-
-
-    <!-- Text overlay system -->
-    <div id="textOverlay">
-        <div id="textBox">
-            <h2>&quotMassive Lightness&quot, Vol de la Matière et Liberté</h2>
-            <p>
-                Dans l’histoire de la construction, défier la gravité est un objectif qui anime les concepteurs d’architectures: construire plus grand, plus haut, plus léger tout en maîtrisant les forcent qui se mettent en place dans la matière.
-            </p>
-            <p>
-                C’est ce défi que Ludovic Regnault tente à son tour de relever, partant des travaux de ses prédécesseurs dont il repousse aujourd’hui les limites. Par une performance géométrique structurelle et constructive, ses constructions aériennes suscitent un sentiment de liberté.
-            </p>
-            <p>
-                Sa fascination et sa maîtrise des structures lui viennent de son parcours. Il débute ses études en 2013 à l’école d’architecture de Versailles. Il passe ensuite par l’école polytechnique de Zurich pour finalement faire son projet de diplôme sur les structures légères. Ce dernier lui vaut une mention honorable et il sort major de promotion.
-            </p>
-            <p>
-                Il rejoint alors les ingénieurs Bollinger et Grohmann auprès desquels il parcourt l’Europe entre Paris Francfort et Vienne. Au fil du temps il devient expert en définition de géométries et traitement de données. Durant toute une année il met au point un outil de paramétrage de modèles structurels qui sera rapidement utilisé sur les méga-projets de la philharmonie de Belgrade, le stade SSCP à St Petersburg dont la construction vient de s’achever et la ville nouvelle “The Line” en Arabie Saoudite. Ce dernier projet lui vaut d’ailleurs de rejoindre l’équipe des architectes Delugan Meissl.
-            </p>
-            <p>
-                Durant ses premières années il travaille aussi sur des œuvres d’art de Philippe Parreno, Jean-Michel Othoniel et Tomas Saraceno. Il intervient dans la définition géométrique et structurelle du projet de la tour Agbar à Barcelone, une gigantesque toile d’araignée imaginée par l’artiste Tomas Saraceno. Aujourd’hui il emploie la moitié de son temps aux côtés de l’artiste Jean Michel Othoniel dont il a rejoint l’équipe pour développer des outils de conception digitaux et optimiser la production des œuvres.
-            </p>
-            <p>
-                Enfin depuis un an il consacre l’autre moitié de son temps à sa propre pratique et relève son défi: “faire voler de la matière”. Il conceptualise des principes structurels avec lesquels il pousse la matière à la limite de la pesanteur. Pour ce faire, il a créé une application de réalité virtuelle pour modéliser, calculer et évaluer les structures en tant réel. Il leur donne vie en construisant des œuvres sculpturales. Celles-ci vous seront présentes au Clos Des Roses. Il s’agit de sa première exposition en “solo show” qui marque le début du nouveau chapitre de ses créations. Et donc c’est avec une attention particulière qu’il vous convie en tant que premier visiteurs à être les témoins et les “pilotes d’essais” de son art.
-            </p>
-            <p>
-            </p>
-            <p>
-                <i>Texte écrit par Gaetano Carbone pour une exposition au Clos Des Roses pour Art et Vin 2024.<i>
-            </p>
-        </div>
-    </div>
-
-
-    <!-- Text overlay system -->
-    <div id="textOverlayContact">
-        <div id="textBoxContact">
-            Ludovic Regnault<br>
-            ludo.regnault@gmail.com<br>
-            +33 7 62 86 38 84<br>
-            <a href="https://www.instagram.com/ludovic_regnault/">https://www.instagram.com/ludovic_regnault/</a>
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <!-- SECTION A -->
-
-    <div id="signature">
-        <img id="signature-img" src="images/Ludovic Regnault - signature.png" alt="Ludovic Regnault" />
-    </div>
-
-    <!--
-    <div id="path-buttons-a">
-        <button class="path-button" id="btn1">Drawings</button>
-        <button class="path-button" id="btn2">Digital</button>
-    </div>
-
-    <div id="path-buttons-b">
-        <button class="path-button" id="btn1">Land</button>
-        <button class="path-button" id="btn2">Models</button>
-    </div>
-        -->
-
-    <div id="video">
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00000.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00001.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00002.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00003.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00004.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00006.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00008.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00010.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00012.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00014.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00016.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00018.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00020.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00022.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00024.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00026.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00028.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00030.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00032.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00034.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00036.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00038.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00040.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00042.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00044.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00046.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00048.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00050.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00052.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00054.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00056.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00058.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00060.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00062.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00064.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00066.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00068.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00070.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00072.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00074.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00076.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00078.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00080.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00082.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00084.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00086.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00088.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00090.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00092.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00094.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00096.png" alt="Ludovic Regnault - VideoFrame"></section>
-        <section class="frame"><img data-src="images/HighRes/Film/D/Frame_ 00098.png" alt="Ludovic Regnault - VideoFrame"></section>
-    </div>
-
-
-
-
-
-
-
-    <!-- Fixed slides container (images are stacked vertically inside) -->
-    <div id="slidesFixed">
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Murmurations.jpg" alt="Ludovic Regnault - Murmurations"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Lattice of Light.jpg" alt="Ludovic Regnault - Lattice of Light"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Lattice of Light 2.jpg" alt="Ludovic Regnault - Lattice of Light"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Murmurations 2.jpg" alt="Ludovic Regnault - Murmurations"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - The Hanging Theorem.jpg" alt="Ludovic Regnault - The Hanging Theorem"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Airframe of a Sphere.jpg" alt="Ludovic Regnault - Airframe of a Sphere"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Chrysalide.jpg" alt="Ludovic Regnault - Chrysalide"></section>
-        <section class="slide"><img data-src="images/HighRes/Ludovic Regnault - Constellations.jpg" alt="Ludovic Regnault - Constellations"></section>
-
-        <footer id="footer">
-            <p>© Ludovic Regnault 2025</p>
-        </footer>
-    </div>
-    <!-- Spacer provides page height for scrolling. Its height is computed by script. -->
+    
+    <!-- SPACER -->
     <div id="spacer"></div>
 
-    <script src="script.js"></script>
-    <script src="sectionA.js"></script>
-    <script src="sectionC.js"></script>
+    <!-- SCROLLBARS -->
+    <div id="h-scrollbar" class="scrollbar">    </div>
+    <div id="v-scrollbar" class="scrollbar"></div>
 
+    <!-- HOME_BUTTON -->
+    <div id="home">  
+        <div id = "home-hitBox"></div>
+        <div id="home-animation">
+            <div class="frame"><img data-src="\logo_square\700.png"></div>
+            <div class="frame"><img data-src="\logo_square\656.png"></div>
+            <div class="frame"><img data-src="\logo_square\613.png"></div>
+            <div class="frame"><img data-src="\logo_square\569.png"></div>
+            <div class="frame"><img data-src="\logo_square\525.png"></div>
+            <div class="frame"><img data-src="\logo_square\481.png"></div>
+            <div class="frame"><img data-src="\logo_square\438.png"></div>
+            <div class="frame"><img data-src="\logo_square\394.png"></div>
+            <div class="frame"><img data-src="\logo_square\350.png"></div>
+            <div class="frame"><img data-src="\logo_square\306.png"></div>
+            <div class="frame"><img data-src="\logo_square\263.png"></div>
+            <div class="frame"><img data-src="\logo_square\219.png"></div>
+            <div class="frame"><img data-src="\logo_square\175.png"></div>
+            <div class="frame"><img data-src="\logo_square\131.png"></div>
+            <div class="frame"><img data-src="\logo_square\88.png"></div>
+            <div class="frame"><img data-src="\logo_square\44.png"></div>
+            <div class="frame"><img data-src="\logo_square\0.png"></div>
+        </div>
+    </div>
 
+    <!-- BUTTONS -->
+    <div id="btn-mainContainerId" class="btn-mainContainer">
+        <div id="up-icon-cont" class="btn-icon-cont"><img id="up-icon" class="btn-icon" src="cursors/c.png" alt="Up"></div>
+        <div id="down-icon-cont" class="btn-icon-cont"><img id="down-icon" class="btn-icon" src="cursors/c.png" alt="Down"></div>
+        <div id="left-icon-cont" class="btn-icon-cont"><img id="left-icon" class="btn-icon" src="cursors/c.png" alt="Left"></div>
+        <div id="right-icon-cont" class="btn-icon-cont"><img id="right-icon" class="btn-icon" src="cursors/c.png" alt="Right"></div>
+    </div>
 
+    <!-- EXTRA_OVERLAY -->
+    <div class="extra-overlay"></div>
+    <div id="extra-right-overlay" class="extra-overlay"></div>
+
+    <!-- COLUMNS -->
+    <div id="columns">
+            <div id="up-hitbox" class="btn-hitbox"></div>
+            <div id="down-hitbox" class="btn-hitbox"></div>
+            <div id="left-hitbox" class="btn-hitbox"></div>
+            <div id="right-hitbox" class="btn-hitbox"></div>
+    </div>
+
+    <template id="column-template">
+        <div class="column">
+            <div class="column-select-button"></div>
+        </div>
+    </template>
+
+    <template id="animation-template">
+        <div class="animation-and-title-contener">
+            <div class="animation"></div>
+            <div class="title-contener">
+                <div class="title"></div>
+                <div class="detail"></div>
+                <div class="description"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="frame-template">
+        <div class="frame"><img></div>
+    </template>
+
+    <template id="detail-line-template">
+        <div class="detail-line"></div>
+    </template>
+
+    <template id="slide-template">
+        <div class="slide"><img></div>
+    </template>
+
+    <!-- ABOUT -->
+    <div id="about">
+        <div id="about-text">
+            <p>
+                    <b>Ludovic Regnault</b> is a French contemporary artist exploring the hidden links between forces, matter and geometry.
+                    He builds spatial structures and aerial compositions, inviting viewers to join his rebellion against gravity giving rise to a beautiful sense of freedom.
+                    In the following you will find a selection of his main artworks, presented during his shows under the name of <b>Massive Lightness</b>.
+            </p>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact">
+        <a href="https://instagram.com/ludovic_regnault" target="_blank" id="insta-link" title="Visit Instagram page">
+            <img src="icons/instagram.png" id="insta-icon" alt="">
+        </a>
+        <a href="https://www.linkedin.com/in/ludovic-regnault-b8b434195" target="_blank" id="linkedin-link" title="Visit Linked-In page">
+            <img src="icons/linkedin.png" id="linkedin-icon" alt="">
+        </a>
+        <a href="https://wa.me/message/6DRKQCR4FPDCD1" target="_blank" id="whatsapp-link" title="Contact via WhatsApp">
+            <img src="icons/whatsapp.png" id="whatsapp-icon" alt="">
+        </a>
+    </div>
+
+    <!-- credits -->
+     <div id="credits">
+            <p>
+                    © Ludovic Regnault, 2025<br />
+                    Music © Charles Regnault
+            </p>
+    </div>
+
+    <script src="js/variables.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/helper_animation.js"></script>
+    <script src="js/helper_motion.js"></script>
+    <script src="js/helper_load.js"></script>
+    <script src="js/navigation_zoom.js"></script>
+    <script src="js/navigation_move.js"></script>
+    <script src="js/apparence_scroll.js"></script>
+    <script src="js/apparence_buttons.js"></script>
+    <script src="js/apparence_logo_animation.js"></script>
+    <script src="js/apparence_scrollbars.js"></script>
+    <script src="js/apparence_home.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+        -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/*
+@font-face {
+    font-family: "Mignon Pro";
+    src: url("fonts/MignonPro.woff2") format("woff2"),
+         url("fonts/MignonPro.woff") format("woff");
+    font-style: bold;
+    font-display: swap;
+}
+    */
+
+/* Titles */
+h1, h2, h3, .title {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-style: bold;
+    font-weight: 300;
+}
+
+/* Paragraphs */
+body, p, li {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+}
+
+body {
+    cursor: default;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto; /* allow vertical scroll */
+    overflow-x: auto; /* allow h scroll */
+
+    opacity: 0;
+    /*transition: opacity 0.3s ease;*/
+    color: black;
+    background-color: var(--backColor);
+
+}
+    body.ready {
+        opacity: 1;
+    }
+
+
+
+
+/* Hide browser scrollbars everywhere */
+html, body, #columns {
+    scrollbar-width: none; /* Firefox */
+}
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    #columns::-webkit-scrollbar {
+        display: none; /* Chrome, Edge, etc. */
+    }

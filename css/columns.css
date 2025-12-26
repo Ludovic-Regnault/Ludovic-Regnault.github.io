@@ -1,0 +1,200 @@
+#columns {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap; /* ensures side-by-side layout */
+    z-index: 1;
+}
+
+
+.column {
+    flex: 0 0 auto; /* do not shrink; keep fixed width */
+    width: var(--column-width);
+    height: var(--column-height);
+    overflow: hidden;
+    margin: var(--scaledImagePadding);
+    margin-left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+}
+.column.loaded {
+    opacity: 1;
+}
+
+#columnOne{
+    margin-left: var(--scaledImagePadding); /* to have padding on the left of the first column */
+}
+
+/* animation and text */
+.animation-and-title-contener{
+    position: relative;
+    width:auto;
+    height: auto;
+    display: flex;              /* put children side by side */
+    align-items: flex-start;    /* top-align animation and text */
+}
+
+.animation {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: var(--animation-size);
+    height: var(--animation-size);
+    flex: 0 0 var(--animation-size); /* do not shrink, fixed width */
+    overflow: hidden;
+}
+
+.frame {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+    .frame.active {
+        opacity: 1;
+    }
+
+    .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+ /* text */
+
+.title-contener{
+    position: relative;
+    z-index: 4;
+    pointer-events: none;
+
+    width: 100%;  
+    height: var(--animation-size);
+    margin-left: var(--scaledImagePadding);
+    overflow-y: auto;                    /* vertical scroll if needed */
+    overflow-x: hidden;
+
+    font-size: var(--textHeight);
+}
+
+.zoomOut .title-contener{
+    z-index: 1;
+    /*background-color: rgb(240, 240, 240);*/
+    overflow-y: hidden;
+}
+
+
+
+.zoomOut .title,
+.zoomOut .detail,
+.zoomOut .description{
+    width: 100%;
+    word-wrap: break-word;          /* allow long words/URLs to wrap */
+    overflow-wrap: break-word;      /* modern version */
+    white-space: normal;            /* allow line wrapping */
+
+    z-index: 1;
+}
+.title,
+.detail,
+.description{
+    width: 100%;
+    word-wrap: break-word;          /* allow long words/URLs to wrap */
+    overflow-wrap: break-word;      /* modern version */
+    white-space: normal;            /* allow line wrapping */
+
+    z-index: 4;
+    cursor:text;
+}
+
+.title,
+.detail,
+.description {
+    pointer-events: auto;
+}
+
+.detail{
+    margin-top: calc(0.5* var(--marginTxt));
+}
+.description{
+    margin-top: var(--marginTxt);
+}
+
+
+
+
+
+
+
+
+
+/* Column select button */
+.column-select-button{
+    position: absolute;
+    width: var(--column-width);
+    height: var(--column-height);
+    z-index: 0;
+    cursor: zoom-in;
+    pointer-events: none    ;
+}
+
+.zoomedOut .column-select-button{
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.column-select-button:hover {
+    background-color: rgba(230,230,230,0.4);
+}
+
+
+
+
+
+/* Portrait mode: stacked layout */
+.portrait .animation-and-title-contener {
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+/* Animation keeps same size */
+.portrait .animation {
+    flex: 0 0 var(--animation-size);
+    width: var(--animation-size);
+    height: var(--animation-size);
+}
+
+/* Title block full width under animation */
+.portrait .title-contener {
+    width: 100%;
+    margin-left: 0;
+    margin-top: var(--scaledImagePadding);
+
+    /* Height will be set by JS */
+    overflow: visible;
+}
+
+
+
+
+/* slides */
+.column .slide {
+    width: var(--image-width);
+    height: var(--image-height);
+    margin-top: var(--scaledImagePadding);
+}
+
+    .column .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            -webkit-user-drag: none;
+            user-select: none;
+            
+    }

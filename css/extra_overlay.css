@@ -1,0 +1,21 @@
+.extra-overlay {
+    position: fixed;
+    top: 0;
+    width: var(--extraround);
+    height: 100%;
+    pointer-events: none; /* allow clicking through overlays if needed */
+    z-index: 10;
+    /* Tiling pattern */
+    background-image: url("../hatch_pattern.png");
+    background-repeat: repeat; /* tile in both directions */
+    background-size: var(--patternSize) var(--patternSize); /* control tile size */
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+    .extra-overlay.visible {
+        opacity: 1;
+    }
+#extra-right-overlay {
+    right:0;
+}
+

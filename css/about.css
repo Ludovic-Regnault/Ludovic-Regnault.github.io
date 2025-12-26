@@ -1,0 +1,29 @@
+#about.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ABOUT SECTION WRAPPER — height already set by JS */
+#about {
+    position: fixed;
+    top: 0px; /* hidden by default */
+    left: 0px;
+    width: 100%;
+    padding: var(--imagePadding);
+    display: flex;
+    flex-direction: column; /* so animation stays on top */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+
+/* TEXT AREA */
+#about-text {
+    width: min(100%, 700px);                      /* REQUIREMENT */
+    height: 100%;                        /* same height as container */
+    overflow-y: auto;                    /* scroll text when needed */
+    overflow-x: hidden;
+    font-size: 19px;
+    cursor: text;
+}
