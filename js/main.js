@@ -72,16 +72,26 @@ async function finalizeLoad() {
 }
 
 
+let lastOrientation = window.innerWidth > window.innerHeight ? "landscape" : "portrait";
 let resizeTimeout;
 window.addEventListener('resize', () => {
-    if (isMobile) return;//no resize on mobile
-    if(DidAspectRatioChange()){
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
+    if (isMobile){
+        const currentOrientation =
+        window.innerWidth > window.innerHeight ? "landscape" : "portrait";
+
+        if (currentOrientation !== lastOrientation) {
+            lastOrientation = currentOrientation;
             Home();
-        }, 100); // tweak delay
+        }
     }else{
-        UserEditedZoom();
+        if(DidAspectRatioChange()){
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                Home();
+            }, 100); // tweak delay
+        }else{
+            UserEditedZoom();
+        }
     }
 });
 
