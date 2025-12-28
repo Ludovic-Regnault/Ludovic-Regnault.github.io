@@ -56,7 +56,7 @@ const slideEls = document.getElementsByClassName("slide");
 
 document.documentElement.style.setProperty('--backColor', 'rgb(250,250,250)');
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-//if (isMobile) document.body.classList.add("isMobile");
+if (isMobile) document.body.classList.add("isMobile");
 
 let vh = window.innerHeight;
 let vw = window.innerWidth;
@@ -99,7 +99,7 @@ let globalPaddingW = 0;
 let extraSide = 0;
 let buttonHeight = 0;
 let imagePadding = 0;
-const scrollLengthVideo = 1000;
+let scrollLengthVideo = 1000;
 
 let slideCount = 3;
 let columnCount = 3;
@@ -114,6 +114,8 @@ let allColumnSelectButtons = [];// clickable buttons on zoomout
 
 zoomOutVisibleColumnCount = 1;
 let zooming = false;
+
+let resetAnimations = false;
 
 
 function Remap(value, sourceMin, sourceMax, targetMin, targetMax) {

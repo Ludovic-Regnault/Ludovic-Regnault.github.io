@@ -1,4 +1,33 @@
-﻿//PREVENT DRAG 2D
+﻿let bgMusic = null;
+let bgMusicPlays = false;
+
+if (!isMobile) {
+    bgMusic = new Audio("FragmentsOfLight.mp3");
+    bgMusic.loop = true;
+    bgMusic.muted = true;   // allow autoplay
+    bgMusic.preload = "auto";
+
+    // try to start silently
+    /*bgMusic.play().catch(() => {
+        // autoplay may still be blocked; ignore
+    });*/
+
+    // unmute on first interaction
+   /* document.addEventListener("click", () => {
+        if (bgMusic) {
+            bgMusic.muted = false;
+            bgMusic.play();
+        }
+    }, { once: true });*/
+}
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) bgMusic?.pause();
+    else bgMusic?.play();
+});
+
+
+//PREVENT DRAG 2D
 /*document.addEventListener("mousedown", (e) => {
     if (e.button === 1) {  // Middle click
         e.preventDefault();
@@ -45,19 +74,22 @@ async function finalizeLoad() {
 
 let resizeTimeout;
 window.addEventListener('resize', () => {
+    if (isMobile) return;//no resize on mobile
     if(DidAspectRatioChange()){
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             Home();
         }, 100); // tweak delay
     }else{
-            console.log("scroll in/out only");
         UserEditedZoom();
     }
 });
 
 function Home(){
     document.body.classList.remove('ready');
+    
+    xSnap = 0;
+    ySnap = 0;
     smoothZoomXY(1, 1, 0, 0, 0, 0, 0);//instant zoom to 1 for reset
 
     AspectRatioA();
@@ -123,7 +155,12 @@ function onYmove(){
     Y = window.scrollY;
     UpdateRightScrollBar();
     UpdateButtonsHiding();
-    UpdateScrollYForAnimations();
+    if (resetAnimations){
+        ResetAnimations();
+    }else{
+        UpdateScrollYForAnimations();
+    }
+    
     UpdateScrollYForColumnsPos();
 };
 
@@ -134,11 +171,11 @@ window.addEventListener("scroll", () => {
 function onZoom(){
     if (scale === 1) {
         document.body.classList.remove("zoomOut");
-        document.documentElement.style.setProperty('--textHeight', '17px');
+        document.documentElement.style.setProperty('--textHeight', '16px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * imagePadding + 'px');
     }else{
         document.body.classList.add("zoomOut");
-        document.documentElement.style.setProperty('--textHeight', (scale * 17) + 'px');
+        document.documentElement.style.setProperty('--textHeight', (scale * 16) + 'px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * scale * imagePadding + 'px');
     }
     updateHitBoxSize();
@@ -150,18 +187,23 @@ function AspectRatioA() {
     vw = window.visualViewport.width;
     squareSide = Math.min(vh, vw);
 
-    console.log("innerHeight:", vh);
+    if (isMobile){
+        scrollLengthVideo = vh * 0.5;//how much scroll for video playing
+    } else{
+        scrollLengthVideo = vh * 0.62;//how much scroll for video playing
+    }
 
     document.documentElement.style.setProperty('--patternSize', squareSide * 0.005 + 'px');
 
     globalPadding = squareSide * 0.007;
+    if(isMobile)globalPadding = squareSide * 0.010;//bigger buttons on mobile
     const scaledGlobalPadding = scale * globalPadding;
     document.documentElement.style.setProperty('--globalPadding', globalPadding + 'px');
     document.documentElement.style.setProperty('--scaledGlobalPadding', scaledGlobalPadding + 'px');
 
     buttonHeight = squareSide * 0.038;
     buttonHeight = Math.min(buttonHeight, 40);
-    if(isMobile)buttonHeight = squareSide * 0.050;
+    if(isMobile)buttonHeight = squareSide * 0.060;//bigger buttons on mobile
     document.documentElement.style.setProperty('--buttonHeight', buttonHeight + 'px');
 
     const scrollBarWidth = squareSide * 0.0035;
@@ -178,7 +220,7 @@ function AspectRatioA() {
 
     aspect = (vw - imageDoublePadding) / (vh - imageDoublePadding);
     targetAspect = (aspect < (4 / 3)) ? (4 / 3) : (16 / 9);
-    if (aspect < 1) {
+    if (aspect < 1.15) {//a bit more than 1:1 to avoid text to be super thin when near border
         document.body.classList.add("portrait");
     } else {
         document.body.classList.remove("portrait");
@@ -235,7 +277,9 @@ function AspectRatioB() {
 
     //total
     const  slidesHeight  = slideCount *(scaledImagePadding + imageHeight);
-    columnHeight = animationHeight + portraitTextHeight + slidesHeight;//there will be margin around
+    let portraitTextMargin = 0;
+    if (portraitTextHeight > 0) portraitTextMargin = scaledImagePadding;
+    columnHeight = animationHeight + portraitTextHeight + portraitTextMargin + slidesHeight;//there will be margin around
     columnsHeight = columnHeight + 2 * scaledImagePadding;
     document.documentElement.style.setProperty('--column-height', `${columnHeight}px`);
     document.documentElement.style.setProperty('--columns-height', `${columnsHeight}px`);
@@ -343,7 +387,7 @@ function AspectRatioLight(prevScale) {
 function applyUniformTextHeight(done) {
     if (scale != 1)return;
     // Only apply in portrait mode
-    if (aspect > 1) {//then it is landscape aspect
+    if (aspect > 1.15) {//then it is landscape aspect
         document.querySelectorAll(".title-contener").forEach(el => {
             el.style.height = "";
         });
@@ -354,13 +398,14 @@ function applyUniformTextHeight(done) {
 
     const blocks = document.querySelectorAll(".title-contener");
     portraitTextHeight = 0;
+    
 
     // Reset to natural height
     blocks.forEach(el => el.style.height = "auto");
 
     // Measure tallest
     blocks.forEach(el => {
-        const h = el.scrollHeight;
+        const h = el.scrollHeight + imagePadding * 0.5;
         if (h > portraitTextHeight) portraitTextHeight = h;
     });
 
@@ -373,7 +418,7 @@ function applyUniformTextHeight(done) {
 }
 
 function forceUniformTextHeight() {
-    if (aspect > 1) {//then it is landscape aspect
+    if (aspect > 1.15) {//then it is landscape aspect
         document.querySelectorAll(".title-contener").forEach(el => {
             el.style.height = "";
         });

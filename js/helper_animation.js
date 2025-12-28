@@ -13,6 +13,16 @@ function UpdateScrollYForAnimations()
     }
 }
 
+function ResetAnimations()
+{
+        framesPerColumn.forEach((frames, i) => {
+            const frameIndex = 0;
+            frames.forEach((frame, i) => {
+               frame.classList.toggle('active', i === frameIndex);
+            });
+        });
+}
+
 function animate(frames, direction, duration) {
     if (duration === 0) {
         let frameIndex;

@@ -2,6 +2,11 @@
     for (let colIndex = 0; colIndex < allColumnSelectButtons.length; colIndex++) {
         const columnSelectButton = allColumnSelectButtons[colIndex];
         columnSelectButton.addEventListener("click", () => {
+        if (bgMusic && !bgMusicPlays){
+            bgMusicPlays = true;
+            bgMusic.muted = false;
+            bgMusic.play();
+        }
             zoomInColumn(colIndex);
         });
     }

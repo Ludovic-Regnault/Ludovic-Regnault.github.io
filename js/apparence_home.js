@@ -9,7 +9,6 @@ function connectHoverHome() {
             hoverHome(false);
         });
     } else {
-        icon.src = "cursors/" + id + "/u.png";
         home_hitBox.addEventListener("touchstart", () => {
             hoverHome(true);
         });

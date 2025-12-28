@@ -99,6 +99,7 @@ function smoothZoomXY(startZoom, endZoom, startX, targetX, startY, targetY, dura
     document.body.classList.remove("zoomedOut");
     if (duration === 0) {
         scale = endZoom;
+        //document.documentElement.style.setProperty('--scale', scale);
         AspectRatioA();
         AspectRatioB();
 
@@ -132,6 +133,7 @@ function smoothZoomXY(startZoom, endZoom, startX, targetX, startY, targetY, dura
 
         const startTime = performance.now();
 
+        resetAnimations = true;//to avoid animation during de-zoom (and zoom, but zoom animation was not happening anyway)
         function step(now) {
             const elapsed = now - startTime;
             const t = Math.min(1, elapsed / duration);
@@ -141,6 +143,7 @@ function smoothZoomXY(startZoom, endZoom, startX, targetX, startY, targetY, dura
             const prevScale = scale;
 
             scale = startZoom + diffZ * eased;
+            //document.documentElement.style.setProperty('--scale', scale);
             extraSide = startE + diffE * eased;
             onZoom();
 
@@ -164,6 +167,7 @@ function smoothZoomXY(startZoom, endZoom, startX, targetX, startY, targetY, dura
                     document.documentElement.style.setProperty('--spacer-height', `${vh}px`);
                     document.body.classList.add("zoomedOut");
                 }
+                resetAnimations = false;
                 if (onComplete) onComplete();   // call callback at the end
             }
         }

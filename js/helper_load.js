@@ -8,14 +8,18 @@ async function LoadColumns() {
     slideCount = 0;
 
     
-    const columnsRoot = `Columns`;
-    const columnList = await fetch(`${columnsRoot}/columns.json`)
+    let columnsRoot = `Columns`;
+    if (isMobile){
+        columnsRoot = `LowRes/Columns`;
+    }
+    const columnList = await fetch(`Columns/columns.json`)
         .then(r => r.json());
 
     for (const colName of columnList) {
         imagesToPreload = [];
         const colFolder = `${columnsRoot}/${colName}`;
-        const info = await fetch(`${colFolder}/info.json`).then(r => r.json());
+        const colFolderJson = `Columns/${colName}`;
+        const info = await fetch(`${colFolderJson}/info.json`).then(r => r.json());
 
         // Create column
         const colTemp = column_template.content.cloneNode(true);

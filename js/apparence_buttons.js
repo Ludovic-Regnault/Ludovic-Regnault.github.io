@@ -48,9 +48,9 @@ function connectHover(id) {
             hover(false, id, iconCont, icon);
         });
     } else {
-        icon.src = "cursors/" + id + "/u.png";
+        icon.src = "cursors/c.png";
 
-
+        /*
         iconCont.addEventListener("touchstart", () => {
             hoverMobile(true,  iconCont);
         });
@@ -63,8 +63,6 @@ function connectHover(id) {
             hoverMobile(false,  iconCont);
         });
 
-
-
         hitbox.addEventListener("touchstart", () => {
             hoverMobile(true,  iconCont);
         });
@@ -76,6 +74,8 @@ function connectHover(id) {
         hitbox.addEventListener("touchcancel", () => {
             hoverMobile(false,  iconCont);
         });
+        */
+
     }
 }
 
@@ -88,6 +88,8 @@ function hover(on, id, iconCont, icon) {
         icon.src = "cursors/c.png";
     }
 }
+
+/*
 function hoverMobile(on,  iconCont) {
     if (on) {
         iconCont.style.transform = "scale(1.2)";
@@ -95,6 +97,7 @@ function hoverMobile(on,  iconCont) {
         iconCont.style.transform = "scale(1)";
     }
 }
+*/
 
 connectHover("up");
 connectHover("down");

@@ -143,6 +143,12 @@
     pointer-events: none    ;
 }
 
+.isMobile .column-select-button:hover,
+.isMobile .column-select-button:active,
+.isMobile .column-select-button:focus {
+    background-color: transparent;
+}
+
 .zoomedOut .column-select-button{
     z-index: 3;
     pointer-events: auto;
