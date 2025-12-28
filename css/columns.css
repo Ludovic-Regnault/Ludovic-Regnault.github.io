@@ -91,13 +91,9 @@
 .zoomOut .title,
 .zoomOut .detail,
 .zoomOut .description{
-    width: 100%;
-    word-wrap: break-word;          /* allow long words/URLs to wrap */
-    overflow-wrap: break-word;      /* modern version */
-    white-space: normal;            /* allow line wrapping */
-
     z-index: 1;
 }
+
 .title,
 .detail,
 .description{
@@ -109,25 +105,33 @@
     z-index: 4;
     cursor:text;
 
-    font-size: var(--textHeight);
     will-change: transform;
+
+    pointer-events: auto;
 }
 
+.title,
 .title p,
-.title span,
+.title span {
+    font-size: calc(1.5*var(--textHeight));
+}
+
+.detail,
 .detail p,
-.detail span,
+.detail span {
+    font-size: var(--textHeight);
+}
+
+.description,
 .description p,
 .description span {
     font-size: var(--textHeight);
 }
 
 
-.title,
-.detail,
-.description {
-    pointer-events: auto;
-}
+
+
+
 
 .detail{
     margin-top: calc(0.5* var(--marginTxt));

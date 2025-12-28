@@ -3,13 +3,18 @@
     pointer-events: auto;
 }
 
+#home-hitBox {/*fix for safari*/
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+
 #home {
     position: fixed;
     top:0;
     left:var(--extra);
     width: var(--imagePadding);
     height: var(--imagePadding);
-    pointer-events: none;
     z-index: 100;
     opacity: 0;
     pointer-events: none;
@@ -24,6 +29,7 @@
     height: var(--imagePadding);
     z-index: 200;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 #home-animation {

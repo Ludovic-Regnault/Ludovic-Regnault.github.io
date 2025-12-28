@@ -64,30 +64,33 @@ async function zoomInColumn(columnIndex){
 }
 */
 //HOME CLICK: Zoom out
-home_hitBox.addEventListener("click", () => {
+home_hitBox.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    goHome();
+}, { passive: false });
+
+home_hitBox.addEventListener("click", goHome); // desktop fallback
+
+function goHome() {
     if (zooming) return;
-    zooming = true;
-    smoothZoomXY(scale, minSacle, X, 0, Y, 0, 1800, async () => {
-        xSnap = 0;
-        ySnap = 0;
+        zooming = true;
+        smoothZoomXY(scale, minSacle, X, 0, Y, 0, 1800, async () => {
+            xSnap = 0;
+            ySnap = 0;
 
-        contact.classList.add('visible');
-        home.classList.remove('visible');
-        about.classList.add('visible');
-        framesAbout.forEach((frame, i) => {
-            frame.classList.toggle('active', i === 0);
+            contact.classList.add('visible');
+            home.classList.remove('visible');
+            about.classList.add('visible');
+            framesAbout.forEach((frame, i) => {
+                frame.classList.toggle('active', i === 0);
+            });
+            //await sleep(100);
+            Array.from(extra_overlayEls).forEach((extra_overlay) => {
+                extra_overlay.classList.remove('visible');
+            });
+
         });
-        await sleep(100);
-        //animate(framesAbout, 'forward', 1500);
-
-        //await sleep(2000);
-        Array.from(extra_overlayEls).forEach((extra_overlay) => {
-            extra_overlay.classList.remove('visible');
-        });
-
-    });
-});
-
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

@@ -9,27 +9,30 @@
     user-select: text;
 }
 
-/*
-@font-face {
-    font-family: "Mignon Pro";
-    src: url("fonts/MignonPro.woff2") format("woff2"),
-         url("fonts/MignonPro.woff") format("woff");
-    font-style: bold;
-    font-display: swap;
-}
-    */
-
 /* Titles */
 h1, h2, h3, .title {
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-style: bold;
+    font-style: normal;
     font-weight: 300;
+    font-size: inherit;
 }
 
 /* Paragraphs */
 body, p, li {
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-style: normal;
     font-weight: 300;
+    font-size: inherit;
+}
+
+em {
+    font-style: italic;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+span {
+    font-size: inherit;
 }
 
 body {
