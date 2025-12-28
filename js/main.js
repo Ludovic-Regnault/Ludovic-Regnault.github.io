@@ -1,7 +1,7 @@
 ﻿let bgMusic = null;
 let bgMusicPlays = false;
 
-if (!isMobile) {
+//if (!isMobile) {
     bgMusic = new Audio("FragmentsOfLight.mp3");
     bgMusic.loop = true;
     bgMusic.muted = true;   // allow autoplay
@@ -19,7 +19,7 @@ if (!isMobile) {
             bgMusic.play();
         }
     }, { once: true });*/
-}
+//}
 
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) bgMusic?.pause();

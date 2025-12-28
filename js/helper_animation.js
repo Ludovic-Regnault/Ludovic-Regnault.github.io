@@ -5,7 +5,7 @@ function UpdateScrollYForAnimations()
         const progress = Remap(Y, 0, scrollLengthVideo, 0, 1);
 
         framesPerColumn.forEach((frames, i) => {
-            const frameIndex = Math.min(Math.floor(progress * frames.length), frames.length - 1);
+            const frameIndex = Math.max(Math.min(Math.floor(progress * frames.length), frames.length - 1), 0);
             frames.forEach((frame, i) => {
                frame.classList.toggle('active', i === frameIndex);
             });

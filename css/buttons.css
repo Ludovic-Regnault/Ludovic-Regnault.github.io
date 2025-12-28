@@ -65,8 +65,9 @@
 
 /* loc */
 #up-icon-cont{
-    top: 0px;
-    justify-self: center;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #up-hitbox {
     display: block;
@@ -82,9 +83,9 @@
 }
 
 #down-icon-cont{
-    bottom: 0px;
-    justify-self: center;
-    transform: rotate(180deg);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
 }
 #down-hitbox {
     display: block;

@@ -78,8 +78,6 @@
     margin-left: var(--scaledImagePadding);
     overflow-y: auto;                    /* vertical scroll if needed */
     overflow-x: hidden;
-
-    font-size: var(--textHeight);
 }
 
 .zoomOut .title-contener{
@@ -110,7 +108,20 @@
 
     z-index: 4;
     cursor:text;
+
+    font-size: var(--textHeight);
+    will-change: transform;
 }
+
+.title p,
+.title span,
+.detail p,
+.detail span,
+.description p,
+.description span {
+    font-size: var(--textHeight);
+}
+
 
 .title,
 .detail,
