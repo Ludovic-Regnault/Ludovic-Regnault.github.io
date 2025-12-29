@@ -24,10 +24,7 @@
     height: 100%;                        /* same height as container */
     overflow-y: auto;                    /* scroll text when needed */
     overflow-x: hidden;
-    font-size: 18px;
     cursor: text;
-}
-
-.isMobile #about-text {
     font-size: 16px;
 }
+

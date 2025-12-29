@@ -71,7 +71,7 @@
 .title-contener{
     position: relative;
     z-index: 4;
-    pointer-events: none;
+    /*pointer-events: none;*//* PUT BACK ??? */
 
     width: 100%;  
     height: var(--animation-size);
@@ -110,23 +110,7 @@
     pointer-events: auto;
 }
 
-.title,
-.title p,
-.title span {
-    font-size: calc(1.5*var(--textHeight));
-}
 
-.detail,
-.detail p,
-.detail span {
-    font-size: var(--textHeight);
-}
-
-.description,
-.description p,
-.description span {
-    font-size: var(--textHeight);
-}
 
 
 
