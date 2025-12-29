@@ -179,13 +179,15 @@ window.addEventListener("scroll", () => {
 });
 
 function onZoom(){
+    let h = 16;
+    if (isMobile) h = 14;
     if (scale === 1) {
         document.body.classList.remove("zoomOut");
-        document.documentElement.style.setProperty('--textHeight', '16px');
+        document.documentElement.style.setProperty('--textHeight', h + 'px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * imagePadding + 'px');
     }else{
         document.body.classList.add("zoomOut");
-        document.documentElement.style.setProperty('--textHeight', (scale * 16) + 'px');
+        document.documentElement.style.setProperty('--textHeight', h + (scale * 16) + 'px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * scale * imagePadding + 'px');
     }
     updateHitBoxSize();
