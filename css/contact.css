@@ -2,7 +2,7 @@
     position: fixed;
     bottom: var(--globalPadding);
     right: var(--globalPadding);
-    font-size: calc(0.22 * var(--imagePadding));
+    font-size: calc(0.27 * var(--imagePadding));
     z-index: 100;
     user-select: none;
     pointer-events: none;

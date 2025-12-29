@@ -1,4 +1,6 @@
 ﻿//LOAD COLUMNS
+
+
 async function LoadColumns() {
     allColumnEls = [];
     allColumnSelectButtons = [];
@@ -6,6 +8,8 @@ async function LoadColumns() {
     framesPerColumn = [];
     columnCount = 0;
     slideCount = 0;
+    titles = [];
+    titlesSpacers = [];
 
     
     let columnsRoot = `Columns`;
@@ -60,6 +64,8 @@ async function LoadColumns() {
                 desc.appendChild(p);
             });
         }
+        titles.push(animTemp.querySelector(".title-contener"));
+        titlesSpacers.push(animTemp.querySelector(".animation-and-title-contener"));
         column.appendChild(animTemp);
 
         // Add slides

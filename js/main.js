@@ -1,33 +1,4 @@
-﻿let bgMusic = null;
-let bgMusicPlays = false;
-
-//if (!isMobile) {
-    bgMusic = new Audio("FragmentsOfLight.mp3");
-    bgMusic.loop = true;
-    bgMusic.muted = true;   // allow autoplay
-    bgMusic.preload = "auto";
-
-    // try to start silently
-    /*bgMusic.play().catch(() => {
-        // autoplay may still be blocked; ignore
-    });*/
-
-    // unmute on first interaction
-   /* document.addEventListener("click", () => {
-        if (bgMusic) {
-            bgMusic.muted = false;
-            bgMusic.play();
-        }
-    }, { once: true });*/
-//}
-
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) bgMusic?.pause();
-    else bgMusic?.play();
-});
-
-
-//PREVENT DRAG 2D
+﻿//PREVENT DRAG 2D
 /*document.addEventListener("mousedown", (e) => {
     if (e.button === 1) {  // Middle click
         e.preventDefault();
@@ -51,12 +22,20 @@ window.addEventListener('load', async () => {
     await preloadAllRegisteredLogo();
 
     await LoadColumns();
+
+    //added to make text height measurement correct, but don't know why it works... I just copied from Home() function
+    xSnap = 0;
+    ySnap = 0;
+    smoothZoomXY(1, 1, 0, 0, 0, 0, 0);//instant zoom to 1 for reset
+    //
+
     AspectRatioA();
 
     if (scale === 1) {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 applyUniformTextHeight(() => {
+                    //document.body.classList.add('ready');
                     finalizeLoad();
                 });
             });
@@ -187,7 +166,7 @@ function onZoom(){
         document.documentElement.style.setProperty('--marginTxt', 0.5 * imagePadding + 'px');
     }else{
         document.body.classList.add("zoomOut");
-        document.documentElement.style.setProperty('--textHeight',  (scale * h) + 'px');
+        document.documentElement.style.setProperty('--textHeight',  ( Math.max(0.005, 1-(1-scale)*1.01) * h) + 'px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * scale * imagePadding + 'px');
     }
     updateHitBoxSize();
@@ -232,7 +211,7 @@ function AspectRatioA() {
 
     aspect = (vw - imageDoublePadding) / (vh - imageDoublePadding);
     targetAspect = (aspect < (4 / 3)) ? (4 / 3) : (16 / 9);
-    if (aspect < 1.15) {//a bit more than 1:1 to avoid text to be super thin when near border
+    if (aspect < 1.22) {//a bit more than 1:1 to avoid text to be super thin when near border
         document.body.classList.add("portrait");
     } else {
         document.body.classList.remove("portrait");
@@ -289,9 +268,11 @@ function AspectRatioB() {
 
     //total
     const  slidesHeight  = slideCount *(scaledImagePadding + imageHeight);
-    let portraitTextMargin = 0;
-    if (portraitTextHeight > 0) portraitTextMargin = scaledImagePadding;
-    columnHeight = animationHeight + portraitTextHeight + portraitTextMargin + slidesHeight;//there will be margin around
+    if (portraitTextHeight > 0){
+        columnHeight = portraitTextHeight + slidesHeight;//there will be margin around
+    }else{
+        columnHeight = animationHeight + slidesHeight;
+    }
     columnsHeight = columnHeight + 2 * scaledImagePadding;
     document.documentElement.style.setProperty('--column-height', `${columnHeight}px`);
     document.documentElement.style.setProperty('--columns-height', `${columnsHeight}px`);
@@ -395,34 +376,39 @@ function AspectRatioLight(prevScale) {
 }
 
 
+
 //TEXT IN PORTRAIT MODE
 function applyUniformTextHeight(done) {
     if (scale != 1)return;
     // Only apply in portrait mode
-    if (aspect > 1.15) {//then it is landscape aspect
-        document.querySelectorAll(".title-contener").forEach(el => {
-            el.style.height = "";
+    if (aspect > 1.22) {//then it is landscape aspect
+        titles.forEach(el => {
+            el.style.maxHeight = "";//reset max height
+        });
+        titlesSpacers.forEach(el => {
+            el.style.height = "";//reset
         });
         portraitTextHeight = 0;
         if (done) done();
         return;
     }
-
-    const blocks = document.querySelectorAll(".title-contener");
-    portraitTextHeight = 0;
     
-
-    // Reset to natural height
-    blocks.forEach(el => el.style.height = "auto");
+    //reset height
+    portraitTextHeight = 0;
+    let textHeight = 0;
+    
+    // no max height
+    titles.forEach(el => el.style.maxHeight = "none");
 
     // Measure tallest
-    blocks.forEach(el => {
-        const h = el.scrollHeight + imagePadding * 0.5;
-        if (h > portraitTextHeight) portraitTextHeight = h;
+    titles.forEach(el => {
+        const h = el.scrollHeight;// + imagePadding * 0.5;
+        if (h > textHeight) textHeight = h;
     });
+    portraitTextHeight = animationHeight + imagePadding + textHeight;
 
-    // Apply uniform height
-    blocks.forEach(el => {
+    // Apply uniform height to spacers
+    titlesSpacers.forEach((el, i) => {
         el.style.height = portraitTextHeight + "px";
     });
 
@@ -430,17 +416,22 @@ function applyUniformTextHeight(done) {
 }
 
 function forceUniformTextHeight() {
-    if (aspect > 1.15) {//then it is landscape aspect
-        document.querySelectorAll(".title-contener").forEach(el => {
-            el.style.height = "";
+    if (aspect > 1.22) {//then it is landscape aspect
+         titles.forEach(el => {
+            el.style.maxHeight = "";//reset max height
+        });
+        titlesSpacers.forEach(el => {
+            el.style.height = "";//reset
         });
         portraitTextHeight = 0;
         return;
     }
-    const blocks = document.querySelectorAll(".title-contener");
 
-    // Apply uniform height
-    blocks.forEach(el => {
+    // no max height
+    titles.forEach(el => el.style.maxHeight = "none");
+
+    // Apply uniform height to spacers
+    titlesSpacers.forEach((el, i) => {
         el.style.height = portraitTextHeight + "px";
     });
 }

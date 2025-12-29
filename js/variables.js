@@ -37,21 +37,8 @@ const whatsapp_link = document.getElementById("whatsapp-link");
 const contact = document.getElementById("contact");
 const btn_mainContainerId = document.getElementById("btn-mainContainerId");
 
-const scrollbarEls = document.getElementsByClassName("scrollbar");
-const animationEls = document.getElementsByClassName("animation");
-const frameEls = document.getElementsByClassName("frame");
 const btn_mainContainer = document.getElementsByClassName("btn-mainContainer");
-const btn_hitboxEls = document.getElementsByClassName("btn-hitbox");
-const btn_icon_contEls = document.getElementsByClassName("btn-icon-cont");
-const btn_iconEls = document.getElementsByClassName("btn-icon");
 const extra_overlayEls = document.getElementsByClassName("extra-overlay");
-const columnEls = document.getElementsByClassName("column");
-const title_contenerEls = document.getElementsByClassName("title-contener");
-const titleEls = document.getElementsByClassName("title");
-const detailEls = document.getElementsByClassName("detail");
-const descriptionEls = document.getElementsByClassName("description");
-const detail_lineEls = document.getElementsByClassName("detail-line");
-const slideEls = document.getElementsByClassName("slide");
 
 
 document.documentElement.style.setProperty('--backColor', 'rgb(250,250,250)');
@@ -60,7 +47,6 @@ if (isMobile) document.body.classList.add("isMobile");
 
 let vh = window.innerHeight;
 let vw = window.innerWidth;
-let ivw = vw;
 let squareSide = 100;
 let aspect = 1;
 let targetAspect = 1;
@@ -116,6 +102,17 @@ zoomOutVisibleColumnCount = 1;
 let zooming = false;
 
 let resetAnimations = false;
+
+let titles;
+let titlesSpacers;
+
+let bgMusic = null;
+let bgMusicPlays = false;
+
+    bgMusic = new Audio("FragmentsOfLight.mp3");
+    bgMusic.loop = true;
+    bgMusic.muted = true;   // allow autoplay
+    bgMusic.preload = "auto";
 
 
 function Remap(value, sourceMin, sourceMax, targetMin, targetMax) {

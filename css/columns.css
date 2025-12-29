@@ -31,7 +31,7 @@
 .animation-and-title-contener{
     position: relative;
     width:auto;
-    height: auto;
+    height: var(--animation-size);/* for landscape mode, portrait is done in JS */
     display: flex;              /* put children side by side */
     align-items: flex-start;    /* top-align animation and text */
 }
@@ -66,19 +66,22 @@
         display: block;
     }
 
- /* text */
 
+
+ /* text */
 .title-contener{
     position: relative;
+
     z-index: 4;
     /*pointer-events: none;*//* PUT BACK ??? */
+    cursor:text;
 
     width: 100%;  
-    height: var(--animation-size);
+    height: auto;
+    max-height: var(--animation-size);/* for landscape mode, portrait is done in JS */
     margin-left: var(--scaledImagePadding);
     overflow-y: auto;                    /* vertical scroll if needed */
     overflow-x: hidden;
-    background-color: whitesmoke;
 }
 
 .zoomOut .title-contener{
@@ -104,12 +107,15 @@
     white-space: normal;            /* allow line wrapping */
 
     z-index: 4;
-    cursor:text;
 
     will-change: transform;
 
     pointer-events: auto;
 }
+
+
+
+
 
 
 
