@@ -187,7 +187,7 @@ function onZoom(){
         document.documentElement.style.setProperty('--marginTxt', 0.5 * imagePadding + 'px');
     }else{
         document.body.classList.add("zoomOut");
-        document.documentElement.style.setProperty('--textHeight', h + (scale * 16) + 'px');
+        document.documentElement.style.setProperty('--textHeight',  (scale * h) + 'px');
         document.documentElement.style.setProperty('--marginTxt', 0.5 * scale * imagePadding + 'px');
     }
     updateHitBoxSize();

@@ -78,7 +78,7 @@
     margin-left: var(--scaledImagePadding);
     overflow-y: auto;                    /* vertical scroll if needed */
     overflow-x: hidden;
-    background-color: wheat;
+    background-color: whitesmoke;
 }
 
 .zoomOut .title-contener{
