@@ -179,8 +179,8 @@ window.addEventListener("scroll", () => {
 });
 
 function onZoom(){
-    let h = 16;
-    if (isMobile) h = 14;
+    const h = 16;
+    //if (isMobile) h = 14;
     if (scale === 1) {
         document.body.classList.remove("zoomOut");
         document.documentElement.style.setProperty('--textHeight', h + 'px');

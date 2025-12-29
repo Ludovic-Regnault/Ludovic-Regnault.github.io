@@ -27,7 +27,3 @@
     cursor: text;
     font-size: 16px;
 }
-
-.isMobile #about-text {
-    font-size: 14px;
-}

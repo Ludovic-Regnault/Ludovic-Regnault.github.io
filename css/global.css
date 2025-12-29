@@ -11,10 +11,8 @@
 
 html {
     font-size: var(--textHeight, 16px);
-}
-
-.isMobile html {
-    font-size: var(--textHeight, 14px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* About */
