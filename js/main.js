@@ -296,7 +296,7 @@ function AspectRatioB() {
         ySnaps.push(yVal);
         yVal += animationHeight + imagePadding;
         ySnaps.push(yVal);
-        let scrollableText = portraitTextHeight;
+        let scrollableText = portraitTextHeight - (animationHeight + imagePadding);
         if (scrollableText > 1) yVal += imagePadding;
         while (scrollableText > 1) {
             if (scrollableText > vh) {
